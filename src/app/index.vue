@@ -139,7 +139,7 @@ export default {
       //   console.log(e);
       //   this.hoverElement = e.element
       // });
-      eventBus.on('element.dblclick', e => {
+      eventBus.on('element.dblclick', (e) => {
         console.log(e);
         this.elementId = e.element.id;
         this.dialogVisible = true;
@@ -175,7 +175,7 @@ export default {
     },
     async importXml(file) {
       var reader = new FileReader();
-      reader.onload = event => {
+      reader.onload = (event) => {
         this.modeler.importXML(event.target.result);
       };
       reader.readAsText(file.raw);

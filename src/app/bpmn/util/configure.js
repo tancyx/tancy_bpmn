@@ -23,7 +23,7 @@ export default function configureModeler(
     warnings.push(warning);
   }
 
-  const dynamicMiddlewares = getPlugins('bpmn.modeler.configure').map(fn => {
+  const dynamicMiddlewares = getPlugins('bpmn.modeler.configure').map((fn) => {
     return function wrappedMiddleware(options, logWarning) {
       try {
         const newOptions = fn(options, logWarning);
@@ -107,7 +107,7 @@ export default function configureModeler(
     ...defaultOptions
   };
 
-  middlewares.forEach(fn => {
+  middlewares.forEach((fn) => {
     options = fn(options, logWarning);
   });
 

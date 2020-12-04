@@ -49,7 +49,7 @@ export default class PropertiesPanelKeyboardBindings {
     this._eventBus.fire('propertiesPanel.focusout');
   };
 
-  handleKeydown = event => {
+  handleKeydown = (event) => {
     const commandStack = this._commandStack;
 
     if (isUndo(event)) {
