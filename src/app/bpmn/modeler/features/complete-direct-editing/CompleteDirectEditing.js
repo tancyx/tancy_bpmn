@@ -18,7 +18,4 @@ export default function CompleteDirectEditing(editorActions, injector) {
   });
 }
 
-CompleteDirectEditing.$inject = [
-  'editorActions',
-  'injector'
-];
+CompleteDirectEditing.$inject = ['editorActions', 'injector'];

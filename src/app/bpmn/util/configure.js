@@ -9,13 +9,13 @@
  */
 
 export default function configureModeler(
-  getPlugins, defaultOptions = {}, handleMiddlewareExtensions
+  getPlugins,
+  defaultOptions = {},
+  handleMiddlewareExtensions
 ) {
-
   const warnings = [];
 
   function logWarning(warning) {
-
     if (typeof warning === 'string') {
       warning = new Error(warning);
     }
@@ -24,9 +24,7 @@ export default function configureModeler(
   }
 
   const dynamicMiddlewares = getPlugins('bpmn.modeler.configure').map(fn => {
-
     return function wrappedMiddleware(options, logWarning) {
-
       try {
         const newOptions = fn(options, logWarning);
 
@@ -44,14 +42,11 @@ export default function configureModeler(
   });
 
   const middlewares = [
-
     function moddleExtensionsMiddleware(options, logWarning) {
       const plugins = getPlugins('bpmn.modeler.moddleExtension');
 
       const moddleExtensions = plugins.reduce((extensions, extension) => {
-        let {
-          name
-        } = extension;
+        let { name } = extension;
 
         if (typeof name !== 'string') {
           logWarning('bpmn.modeler.moddleExtension is missing <name> property');
@@ -62,7 +57,11 @@ export default function configureModeler(
         extensions = extensions || {};
 
         if (name in extensions) {
-          logWarning('bpmn.modeler.moddleExtension overrides moddle extension with name <' + name + '>');
+          logWarning(
+            'bpmn.modeler.moddleExtension overrides moddle extension with name <' +
+              name +
+              '>'
+          );
         }
 
         return {

@@ -8,12 +8,13 @@
  * except in compliance with the MIT License.
  */
 
-import {
-  getDefaultTemplate
-} from 'bpmn-js-properties-panel/lib/provider/camunda/element-templates/Helper';
+import { getDefaultTemplate } from 'bpmn-js-properties-panel/lib/provider/camunda/element-templates/Helper';
 
-
-export default function applyDefaultTemplates(elementRegistry, elementTemplates, commandStack) {
+export default function applyDefaultTemplates(
+  elementRegistry,
+  elementTemplates,
+  commandStack
+) {
   const elements = elementRegistry.getAll();
 
   const commands = elements.reduce((currentCommands, element) => {
@@ -25,7 +26,7 @@ export default function applyDefaultTemplates(elementRegistry, elementTemplates,
 
     const command = getChangeTemplateCommand(element, template);
 
-    return [ ...currentCommands, command ];
+    return [...currentCommands, command];
   }, []);
 
   if (commands.length === 0) {
@@ -42,8 +43,6 @@ applyDefaultTemplates.$inject = [
   'elementTemplates',
   'commandStack'
 ];
-
-
 
 // helpers //////////
 function getChangeTemplateCommand(element, template) {

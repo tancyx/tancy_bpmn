@@ -7,6 +7,6 @@ module.exports = {
       .test(/\.(bpmn|cmmn|dmn)$/)
       .use('raw-loader')
       .loader('raw-loader')
-      .end()
+      .end();
   }
-}
+};

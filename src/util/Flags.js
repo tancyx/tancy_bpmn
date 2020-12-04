@@ -9,7 +9,6 @@
  */
 
 class Flags {
-
   constructor() {
     this.data = {};
   }
@@ -24,12 +23,10 @@ class Flags {
 
   reset = () => {
     this.data = {};
-  }
-
+  };
 }
 
 export default new Flags();
-
 
 export const DISABLE_CMMN = 'disable-cmmn';
 export const DISABLE_DMN = 'disable-dmn';

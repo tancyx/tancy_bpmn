@@ -1,12 +1,12 @@
 <template>
-  <Container></Container>
+  <container></container>
 </template>
 
 <script>
-import Container from "./app/index";
+import Container from './app/index';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Container
   }

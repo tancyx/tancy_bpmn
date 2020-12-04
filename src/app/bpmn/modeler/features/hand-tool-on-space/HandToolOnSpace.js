@@ -30,8 +30,4 @@ export default function HandToolOnSpace(dragging, editorActions, handTool) {
   });
 }
 
-HandToolOnSpace.$inject = [
-  'dragging',
-  'editorActions',
-  'handTool'
-];
+HandToolOnSpace.$inject = ['dragging', 'editorActions', 'handTool'];

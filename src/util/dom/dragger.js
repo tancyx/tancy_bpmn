@@ -8,10 +8,7 @@
  * except in compliance with the MIT License.
  */
 
-import {
-  domify
-} from 'min-dom';
-
+import { domify } from 'min-dom';
 
 /**
  * Add a dragger that calls back the passed function with
@@ -30,14 +27,12 @@ import {
  * @return {Function} drag start callback function
  */
 export default function createDragger(fn) {
-
   var self;
 
   var startX, startY;
 
   /** drag start */
   function onDragStart(event) {
-
     self = this;
 
     startX = event.clientX;
@@ -74,7 +69,6 @@ export default function createDragger(fn) {
 
   return onDragStart;
 }
-
 
 function emptyCanvas() {
   return domify('<canvas width="0" height="0" />');

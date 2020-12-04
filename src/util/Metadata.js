@@ -31,7 +31,6 @@ const defaultData = {
   }
 };
 
-
 class Metadata {
   constructor() {
     this.data = defaultData;

@@ -8,9 +8,7 @@
  * except in compliance with the MIT License.
  */
 
-import {
-  debounce as _debounce
-} from 'min-dash';
+import { debounce as _debounce } from 'min-dash';
 
 /**
  * Debounce function call according UI update cycle.
@@ -20,7 +18,6 @@ import {
  * @return {Function} debounced fn
  */
 export default function debounce(fn) {
-
   // noop during testing
   if (process.env.NODE_ENV === 'test') {
     return fn;

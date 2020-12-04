@@ -14,7 +14,6 @@ import {
   isShift
 } from 'diagram-js/lib/features/keyboard/KeyboardUtil';
 
-
 export default class PropertiesPanelKeyboardBindings {
   constructor(commandStack, eventBus, propertiesPanel) {
     this._commandStack = commandStack;
@@ -32,7 +31,7 @@ export default class PropertiesPanelKeyboardBindings {
     container.addEventListener('focusin', this.handleFocusin);
     container.addEventListener('focusout', this.handleFocusout);
     container.addEventListener('keydown', this.handleKeydown);
-  }
+  };
 
   _removeEventListeners = () => {
     const container = this._getContainer();
@@ -40,15 +39,15 @@ export default class PropertiesPanelKeyboardBindings {
     container.removeEventListener('focusin', this.handleFocusin);
     container.removeEventListener('focusout', this.handleFocusout);
     container.removeEventListener('keydown', this.handleKeydown);
-  }
+  };
 
   handleFocusin = () => {
     this._eventBus.fire('propertiesPanel.focusin');
-  }
+  };
 
   handleFocusout = () => {
     this._eventBus.fire('propertiesPanel.focusout');
-  }
+  };
 
   handleKeydown = event => {
     const commandStack = this._commandStack;
@@ -64,21 +63,30 @@ export default class PropertiesPanelKeyboardBindings {
 
       event.preventDefault();
     }
-  }
+  };
 
   _getContainer() {
     return this._propertiesPanel._container;
   }
 }
 
-PropertiesPanelKeyboardBindings.$inject = [ 'commandStack', 'eventBus', 'propertiesPanel' ];
+PropertiesPanelKeyboardBindings.$inject = [
+  'commandStack',
+  'eventBus',
+  'propertiesPanel'
+];
 
 // helpers //////////
 
 function isUndo(event) {
-  return isCommandOrControl(event) && !isShift(event) && isKey(['z', 'Z'], event);
+  return (
+    isCommandOrControl(event) && !isShift(event) && isKey(['z', 'Z'], event)
+  );
 }
 
 function isRedo(event) {
-  return isCommandOrControl(event) && (isKey(['y', 'Y'], event) || (isKey(['z', 'Z'], event) && isShift(event)));
+  return (
+    isCommandOrControl(event) &&
+    (isKey(['y', 'Y'], event) || (isKey(['z', 'Z'], event) && isShift(event)))
+  );
 }
