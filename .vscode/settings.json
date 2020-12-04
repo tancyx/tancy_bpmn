@@ -1,0 +1,86 @@
+{
+  "workbench.colorTheme": "Monokai",
+  "editor.fontSize": 16,
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+      "source.fixAll": true
+  },
+  "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "html",
+      "vue"
+  ],
+  "eslint.run": "onSave",
+  //根据文件后缀名定义vue文件类型
+  "files.associations": {
+      "*.vue": "vue"
+  },
+  // 为各类文件制定Fatmatter插件
+  "[vue]": {
+      // "editor.defaultFormatter": "esbenp.prettier-vscode"  // 采用prettier处理格式化
+      "editor.defaultFormatter": "octref.vetur" // 采用vetur来处理Fatmatter
+  },
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // Vetur 的各类设定,仅当上面[vue]的editor.defaultFormatter的值为octref.vetur的时候，才起效
+  "vetur.format.options.tabSize": 2,
+  "vetur.format.styleInitialIndent": false, // 关闭vue中script标签初始缩进，开启会和eslint的缩进校验冲突
+  "vetur.format.scriptInitialIndent": false, // 关闭vue中style标签初始缩进，开启会和eslint的缩进校验冲突
+  "vetur.format.defaultFormatter.html": "js-beautify-html", // 针对vue中的template部分的风格模版，也可以是：prettier
+  "vetur.format.defaultFormatter.js": "prettier-eslint", // 针对vue中的script部分的风格模版，或者prettier
+  "vetur.format.defaultFormatter.css": "prettier", // 针对vue中的style部分的风格模版
+  "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": { // 配置不能和prettier的配置冲突，eslint校验的时候采用的prettier的风格
+          // 给js-beautify-html设置属性隔断
+          "wrap_line_length": 220, //换行长度
+          // 属性换行
+          // 对属性进行换行。
+          // - auto: 仅在超出行长度时才对属性进行换行。
+          // - force: 对除第一个属性外的其他每个属性进行换行。
+          // - force-aligned: 对除第一个属性外的其他每个属性进行换行，并保持对齐。
+          // - force-expand-multiline: 对每个属性进行换行。
+          // - aligned-multiple: 当超出折行长度时，将属性进行垂直对齐。
+          "wrap_attributes": "auto",
+          // Maximum number of line breaks to be preserved in one chunk (0 disables)
+          // "max_preserve_newlines": 0,
+          "end_with_newline": true
+      },
+      "prettyhtml": {
+          "printWidth": 220,
+          "singleQuote": false,
+          "wrapAttributes": false,
+          "sortAttributes": false
+      }
+      // "prettier": {
+      //         // Prettier option here
+      //         "printWidth": 120,
+      //         "trailingComma": "none", // 多行时，尽可能打印尾随的逗号
+      //         "tabWidth": 4, // 会忽略vetur的tabSize配置
+      //         "useTabs": false, // 是否利用tab替代空格
+      //         "semi": false, // 句尾是否加;
+      //         "singleQuote": true, // 使用单引号而不是双引号
+      //         "arrowParens": "avoid", // allow paren-less arrow functions 箭头函数的参数使用圆括号
+      // }
+  },
+  // eslint校验的文件类型
+  // 该属性相当于配置js文件的操作
+  // "[javascript]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "eslint.autoFixOnSave": true,  很多插件提示这么设定，但实际vscode中已经弃用这个设置，改用下面的方式。
+  // 函数名后增加空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "files.eol": "\n"
+}
