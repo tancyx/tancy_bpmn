@@ -1,6 +1,6 @@
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     // GraphQL Loader
     config.module
       .rule('oneOf')
