@@ -34,7 +34,12 @@
       <contextmenu-item class="context-menu-item">更多配置</contextmenu-item>
     </contextmenu>
 
-    <el-dialog :title="elementId" :modal="true" :visible.sync="dialogVisible">
+    <el-dialog
+      :title="elementId"
+      :modal="true"
+      :visible.sync="dialogVisible"
+      v-if="dialogVisible"
+    >
       <properties-panel></properties-panel>
 
       <div slot="footer" class="dialog-footer">
@@ -116,6 +121,7 @@ export default {
         }
       });
       this.modeler.importXML(xml);
+      this.$store.commit('bpmn/setModeler', this.modeler);
       console.log(this.modeler);
       const commandStack = this.modeler.get('commandStack');
       console.log(commandStack);
@@ -141,6 +147,7 @@ export default {
       // });
       eventBus.on('element.dblclick', (e) => {
         console.log(e);
+        this.$store.commit('bpmn/setElement', e.element);
         this.elementId = e.element.id;
         this.dialogVisible = true;
       });
@@ -159,7 +166,7 @@ export default {
     async exportXml() {
       try {
         const result = await this.modeler.saveXML({ format: true });
-        const rootElement = this.modeler.get('canvas')._rootElement;
+        const rootElement = this.modeler.get('canvas').getRootElement();
         var downloadElement = document.createElement('a');
         var href =
           'data:application/bpmn20-xml;charset=UTF-8,' +

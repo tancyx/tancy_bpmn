@@ -1,7 +1,7 @@
 <template>
   <div>
     <general></general>
-    <priority-config></priority-config>
+    <process-priority></process-priority>
     <candidate-starter-config></candidate-starter-config>
     <documentation></documentation>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 import General from '../../items/general';
-import PriorityConfig from '../../items/priorityConfig';
+import ProcessPriority from '../../items/processPriority';
 import CandidateStarterConfig from '../../items/candidateStarterConfig';
 import Documentation from '../../items/documentation';
 
@@ -17,7 +17,7 @@ export default {
   name: 'tabGeneral',
   components: {
     General,
-    PriorityConfig,
+    ProcessPriority,
     CandidateStarterConfig,
     Documentation
   }

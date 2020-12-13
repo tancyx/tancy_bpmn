@@ -27,7 +27,8 @@
     "ids": "^1.0.0",
     "min-dash": "^3.5.2",
     "v-contextmenu": "^2.9.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -15,3 +15,8 @@ const ids = new Ids([32, 36, 1]);
 export default function generateId() {
   return ids.next();
 }
+
+export function nextId(prefix) {
+  var ids = new Ids([32, 32, 1]);
+  return ids.nextPrefixed(prefix);
+}

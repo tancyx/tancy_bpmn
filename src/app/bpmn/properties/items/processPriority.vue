@@ -2,13 +2,14 @@
   <el-form ref="formRef" :model="formData" label-width="100px" size="mini">
     <el-row :gutter="gutter">
       <el-col :span="span">
-        <el-form-item label="ID">
-          <el-input v-model="formData.id" disabled />
+        <el-form-item label="任务优先级" prop="taskPriority">
+          <el-input v-model="formData.taskPriority" @blur="taskPriorityBlur" />
         </el-form-item>
       </el-col>
+
       <el-col :span="span">
-        <el-form-item label="名称" prop="name">
-          <el-input v-model="formData.name" @blur="nameBlur" />
+        <el-form-item label="定时优先级" prop="jobPriority">
+          <el-input v-model="formData.jobPriority" @blur="jobPriorityBlur" />
         </el-form-item>
       </el-col>
     </el-row>
@@ -19,14 +20,14 @@
 import cmdHelper from '../../helper/CmdHelper';
 import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 export default {
-  name: 'itemGeneral',
+  name: 'processPriority',
   data() {
     return {
       modeler: null,
       element: null,
       formData: {
-        id: '',
-        name: ''
+        taskPriority: null,
+        jobPriority: null
       },
       gutter: 10,
       span: 11
@@ -38,18 +39,23 @@ export default {
     this.formData = { ...getBusinessObject(this.element) };
   },
   methods: {
-    nameBlur() {
+    taskPriorityBlur() {
       const command = cmdHelper.updateBusinessObject(
         this.element,
         getBusinessObject(this.element),
-        { name: this.formData.name }
+        { taskPriority: this.formData.taskPriority }
       );
       const commandStack = this.modeler.get('commandStack');
       commandStack.execute(command.cmd, command.context);
-      commandStack.execute('element.updateLabel', {
-        element: this.element,
-        newLabel: this.formData.name
-      });
+    },
+    jobPriorityBlur() {
+      const command = cmdHelper.updateBusinessObject(
+        this.element,
+        getBusinessObject(this.element),
+        { jobPriority: this.formData.jobPriority }
+      );
+      const commandStack = this.modeler.get('commandStack');
+      commandStack.execute(command.cmd, command.context);
     }
   }
 };
